@@ -8,8 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- Tailwind CSS & Chart.js (Local Bundle with CDN fallback) -->
+    <script src="{{ asset('js/tailwind.js') }}"></script>
+    <script>if (typeof tailwind === 'undefined') { document.write('<script src="https://cdn.tailwindcss.com"><\/script>'); }</script>
+    <script src="{{ asset('js/chart.min.js') }}"></script>
+    <script>if (typeof Chart === 'undefined') { document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>'); }</script>
     <script>
         tailwind.config = {
             theme: {
