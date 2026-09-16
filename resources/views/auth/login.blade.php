@@ -207,9 +207,9 @@
         </div>
     </main>
 
-    <!-- Bottom Ambient Skyline Panorama Background -->
-    <div class="fixed inset-x-0 bottom-0 h-36 pointer-events-none z-0 opacity-20 dark:opacity-30 overflow-hidden"
-         style="background-image: url('{{ asset('images/skyline.png') }}'); background-repeat: repeat-x; background-position: bottom center; background-size: auto 120px;">
+    <!-- Full-page Subtle Architectural Skyline Background (Centered, No bottom bar) -->
+    <div class="fixed inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden opacity-[0.04] dark:opacity-[0.08]">
+        <img src="{{ asset('images/skyline_modern.png') }}" alt="" class="w-full max-w-5xl object-contain select-none">
     </div>
 
     <!-- Help Modal -->
@@ -287,10 +287,10 @@
             document.getElementById('login_access_code').placeholder = data.accessCode;
             document.getElementById('txtRememberMe').innerText = data.remember;
             document.getElementById('txtLoginBtn').innerText = data.login;
-            document.getElementById('txtProblem').innerText = data.problem;
-            document.getElementById('txtClickHere').innerText = data.clickHere;
-            document.getElementById('mHelpTitle').innerText = data.mTitle;
-            document.getElementById('mHelpDesc').innerText = data.mDesc;
+            if (document.getElementById('txtProblem')) document.getElementById('txtProblem').innerText = data.problem;
+            if (document.getElementById('txtClickHere')) document.getElementById('txtClickHere').innerText = data.clickHere;
+            if (document.getElementById('mHelpTitle')) document.getElementById('mHelpTitle').innerText = data.mTitle;
+            if (document.getElementById('mHelpDesc')) document.getElementById('mHelpDesc').innerText = data.mDesc;
 
             const currentTheme = localStorage.getItem('alabeer_theme') || 'dark';
             document.getElementById('themeToggleText').innerText = currentTheme === 'dark' ? data.dark : data.light;
@@ -336,7 +336,7 @@
                 lblPass.className = 'block text-xs font-semibold text-slate-300 mb-1';
                 lblCode.className = 'block text-xs font-semibold text-slate-300';
                 txtRem.className = 'text-slate-300 text-xs';
-                txtProb.className = 'text-slate-400';
+                if (txtProb) txtProb.className = 'text-slate-400';
                 if (helpCard) helpCard.className = 'bg-[#141820] border border-[#232b38] rounded-2xl max-w-sm w-full p-5 shadow-2xl text-slate-200 text-xs space-y-3';
             } else {
                 root.classList.remove('dark');
@@ -356,7 +356,7 @@
                 lblPass.className = 'block text-xs font-semibold text-gray-700 mb-1';
                 lblCode.className = 'block text-xs font-semibold text-gray-800';
                 txtRem.className = 'text-gray-700 text-xs';
-                txtProb.className = 'text-gray-600';
+                if (txtProb) txtProb.className = 'text-gray-600';
                 if (helpCard) helpCard.className = 'bg-white rounded-2xl max-w-sm w-full p-5 shadow-2xl text-gray-800 text-xs space-y-3';
             }
         }
