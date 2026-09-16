@@ -1145,6 +1145,9 @@
         function closeModal(id) {
             const el = document.getElementById(id);
             if (el) el.classList.add('hidden');
+            if (id === 'modalPropertyCompliance') {
+                sessionStorage.setItem('dismissed_property_modal', 'true');
+            }
         }
 
         function openNewReservationModal() {

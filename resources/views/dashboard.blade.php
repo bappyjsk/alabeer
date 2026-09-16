@@ -1937,6 +1937,9 @@
                 el.classList.add('hidden');
                 el.classList.remove('flex');
             }
+            if (id === 'modalPropertyCompliance') {
+                sessionStorage.setItem('dismissed_property_modal', 'true');
+            }
         }
 
         function openNewResModal() {
@@ -2342,12 +2345,15 @@
                 }
             } catch (e) {}
 
-            // Auto-show Property Address, Commercial Information & Location modal 3 seconds after login
-            setTimeout(() => {
-                openModal('modalPropertyCompliance');
-                // Automatically query current location to show live coords in popup
-                detectCurrentLocation();
-            }, 3000);
+            // Auto-show Property Address, Commercial Information & Location modal ONLY ONCE after login
+            if (!sessionStorage.getItem('dismissed_property_modal')) {
+                sessionStorage.setItem('dismissed_property_modal', 'true');
+                setTimeout(() => {
+                    openModal('modalPropertyCompliance');
+                    // Automatically query current location to show live coords in popup
+                    detectCurrentLocation();
+                }, 2500);
+            }
             // 1. Room Inventory Donut
             const ctxDonut = document.getElementById('chartInventoryDonut')?.getContext('2d');
             if (ctxDonut) {
