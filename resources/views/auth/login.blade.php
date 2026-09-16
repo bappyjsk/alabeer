@@ -203,20 +203,13 @@
                         <span id="txtLoginBtn">Login</span>
                     </button>
                 </form>
-
-                <!-- Problem link -->
-                <div class="text-center mt-5 text-xs">
-                    <span id="txtProblem">Problem with username or access code?</span> 
-                    <a href="javascript:void(0)" onclick="openHelpModal()" class="text-[#fcba63] underline font-semibold hover:text-[#e4881c]" id="txtClickHere">Click here</a>
-                </div>
-
             </div>
         </div>
     </main>
 
-    <!-- Bottom Area with Skyline Graphic -->
-    <div class="h-24 w-full pointer-events-none relative overflow-hidden">
-        <img src="{{ asset('images/skyline.png') }}" alt="" class="absolute bottom-0 end-0 max-h-20 object-contain opacity-25">
+    <!-- Bottom Ambient Skyline Panorama Background -->
+    <div class="fixed inset-x-0 bottom-0 h-36 pointer-events-none z-0 opacity-20 dark:opacity-30 overflow-hidden"
+         style="background-image: url('{{ asset('images/skyline.png') }}'); background-repeat: repeat-x; background-position: bottom center; background-size: auto 120px;">
     </div>
 
     <!-- Help Modal -->
